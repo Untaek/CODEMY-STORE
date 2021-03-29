@@ -1,0 +1,27 @@
+{
+  "name": "codemy-store",
+  "version": "1.0.0",
+  "description": "### 참고",
+  "main": "index.js",
+  "scripts": {
+    "db": "docker run -p 5432:5432 -v postgres:/val/lib/postgres/data -e POSTGRES_PASSWORD=a1234567 postgres:13",
+    "dev": "nest start --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.11",
+    "@types/node": "^14.14.37",
+    "prisma": "^2.19.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "@nestjs/common": "^7.6.15",
+    "@nestjs/core": "^7.6.15",
+    "@nestjs/platform-express": "^7.6.15",
+    "@prisma/client": "^2.19.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.6.7"
+  }
+}
