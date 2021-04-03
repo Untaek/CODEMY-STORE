@@ -4,8 +4,9 @@
   "description": "### 참고",
   "main": "index.js",
   "scripts": {
-    "db": "docker run -p 5432:5432 -v postgres:/val/lib/postgres/data -e POSTGRES_PASSWORD=a1234567 postgres:13",
-    "dev": "nest start --watch"
+    "db": "docker run -p 5432:5432 -v $(pwd)/postgresql:/var/lib/postgresql/data -e POSTGRES_PASSWORD=a1234567 postgres:13",
+    "dev": "nest start --watch",
+    "seed": "ts-node prisma/seed.ts"
   },
   "author": "",
   "license": "ISC",

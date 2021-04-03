@@ -11,25 +11,45 @@ generator client {
 }
 
 model User {
-  id        Int        @id @default(autoincrement())
-  name      String     @unique @db.VarChar(50)
-  createdAt DateTime   @default(now())
-  email     String     @unique @db.VarChar(100)
-  documents Document[]
+  id            Int                @id @default(autoincrement())
+  name          String             @unique @db.VarChar(50)
+  createdAt     DateTime           @default(now())
+  email         String             @unique @db.VarChar(100)
+  documents     Document[]
+  likeDocuments UserLikeDocument[]
 }
 
 model Document {
-  id        Int       @id @default(autoincrement())
-  title     String    @db.VarChar(100)
-  name      String    @db.VarChar(50)
-  createdAt DateTime  @default(now())
+  id        Int                @id @default(autoincrement())
+  title     String             @db.VarChar(100)
+  name      String             @db.VarChar(50)
+  createdAt DateTime           @default(now())
   userID    Int
-  user      User      @relation(fields: userID, references: id)
+  user      User               @relation(fields: userID, references: id)
   root      Json
   readme    String
   comments  Comment[]
+  languages SourceLanguage[]
+  likeUsers UserLikeDocument[]
 
   @@unique([userID, name])
+}
+
+model UserLikeDocument {
+  user       User     @relation(fields: userID, references: id)
+  userID     Int
+  document   Document @relation(fields: documentID, references: id)
+  documentID Int
+  createdAt  DateTime @default(now())
+
+  @@id([documentID, userID])
+}
+
+model SourceLanguage {
+  id        Int        @id @default(autoincrement())
+  key       String     @unique @db.VarChar(30)
+  name      String     @db.VarChar(30)
+  documents Document[]
 }
 
 model Comment {

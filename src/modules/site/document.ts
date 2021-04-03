@@ -4,6 +4,8 @@ import { PrismaService } from "../../common_services/prisma";
 
 type DocumentParams = {
   where?: Prisma.DocumentWhereInput
+  select?: Prisma.DocumentSelect
+  include?: Prisma.DocumentInclude
 }
 
 @Injectable()

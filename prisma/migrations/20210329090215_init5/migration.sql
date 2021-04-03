@@ -1,3 +1,0 @@
--- AlterTable
-ALTER TABLE "Comment" ALTER COLUMN "modifiedAt" DROP NOT NULL,
-ALTER COLUMN "deletedAt" DROP NOT NULL;
